@@ -1,3 +1,4 @@
+import { forwardRef, Ref } from "react";
 import { PexelImage } from "../../../api/types"
 import styles from './ImageCard.module.scss';
 
@@ -5,20 +6,17 @@ interface Props {
   image: PexelImage
 }
 
-const ImageCard = ({ image }: Props) => {
+const ImageCard = forwardRef<HTMLDivElement, Props>(({ image }, ref) => {
 
   return (
-    <div className={styles.imageCard}>
+    <div className={styles.imageCard} ref={ref} style={{ backgroundColor: ref ? 'red' : undefined }}>
       <img
-        // sizes=''
         loading='lazy' // is lazy loading good enough?
-        // onLoad={}
-        // onError={() => {}}
         src={image.src.large}
         alt={image.alt}
       />
     </div>
   )
-}
+})
 
 export default ImageCard
