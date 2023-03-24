@@ -1,0 +1,16 @@
+@use '/src/style/breakpoints.scss' as *;
+
+.imageCard {
+  display: flex;
+  justify-content: center;
+
+  img {
+    height: fit-content;
+    width: 90%;
+    border-radius: 10px;
+
+    @media (min-width: $tablet) and (max-width: $desktop) {
+      width: 100%;
+    }
+  }
+}

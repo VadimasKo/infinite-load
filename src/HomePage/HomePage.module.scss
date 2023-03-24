@@ -1,0 +1,23 @@
+@use '/src/style/breakpoints.scss' as *;
+
+.page {
+  width: 100vw;
+}
+
+.imageContainer {
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
+
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px;
+  }
+
+  @media (min-width: $desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 40px 60px;
+  }
+}

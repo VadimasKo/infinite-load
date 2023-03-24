@@ -1,4 +1,5 @@
 import { PexelImage } from "../../../api/types"
+import styles from './ImageCard.module.scss';
 
 interface Props {
   image: PexelImage
@@ -7,7 +8,7 @@ interface Props {
 const ImageCard = ({ image }: Props) => {
 
   return (
-    <div>
+    <div className={styles.imageCard}>
       <img
         // sizes=''
         loading='lazy' // is lazy loading good enough?
