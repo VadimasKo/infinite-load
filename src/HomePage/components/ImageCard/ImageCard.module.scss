@@ -3,14 +3,82 @@
 .imageCard {
   display: flex;
   justify-content: center;
+  position: relative;
+  color: white;
+
 
   img {
-    height: fit-content;
     width: 90%;
-    border-radius: 10px;
+    height: fit-content;
+    border-radius: 20px;
 
     @media (min-width: $tablet) and (max-width: $desktop) {
       width: 100%;
+    }
+  }
+
+  .info {
+    display: none;
+  }
+
+  // not pretty, but hey it works \_(O_O)_/
+  &:hover, &.hovered {
+    .info {
+      position: absolute;
+      border-radius: 20px;
+      width: 90%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+
+      @media (min-width: $tablet) and (max-width: $desktop) {
+        width: 100%;
+      }
+
+      * {
+        max-width: 50%;
+        text-align: center;
+  
+      }
+      
+      h3 {
+        font-size: 2rem;
+        margin: 5px;
+      }
+  
+      p {
+        margin: 5px;
+        font-size: 1.5rem;
+      }
+  
+      .divider {
+        margin: 0;
+        background-color: white;
+        width: 30%;
+        height: 2px;
+      }
+  
+      button {
+        margin-top: 20px;
+        background-color:transparent !important;
+        border: rgba(white, 50%) 0.5px solid;
+        border-radius: 25px;
+        color: white;
+        font-size: 1.5rem;
+  
+        padding: 15px 30px;
+        backdrop-filter: blur(5px);
+
+        &:hover, &:active  {
+          transform: scale(1.02);
+          cursor: pointer;
+          background-color: rgba(0, 0, 0, 90%);
+        }
+      }
     }
   }
 }
