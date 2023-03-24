@@ -6,7 +6,7 @@ const useFetchImages = () => {
   const [response, setResponse] = useState<FetchCurratedResponse>();
   const [error, setError] = useState<unknown>()
 
-  const loadMoreImages = async () => {
+  const fetchMoreImages = async () => {
     console.log('load more', response?.photos.length)
     if (!response) return
     try {
@@ -20,13 +20,14 @@ const useFetchImages = () => {
   }
 
   useEffect(() => {
+    console.log('fetch')
     pexelApi.fetchCurrated(30, 1)
       .then(result => setResponse(result))
       .catch(e => setError(e))
   }, [])
 
 
-  return [response?.photos, error, loadMoreImages] as const
+  return [response?.photos, error, fetchMoreImages] as const
 }
 
 export default useFetchImages;
