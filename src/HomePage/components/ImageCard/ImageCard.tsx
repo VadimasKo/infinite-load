@@ -20,7 +20,7 @@ const ImageCard = forwardRef<HTMLDivElement, Props>(({ image, selected, onToogle
       <img
         draggable={false}
         loading='lazy' // is lazy loading good enough?
-        src={image.src.large}
+        src={image.src.large2x}
         alt={image.alt}
       />
       <div draggable={false} className={styles.info}>
