@@ -4,12 +4,11 @@ const pexelUrl = import.meta.env.VITE_PEXEL_URL
 const pexelKey = import.meta.env.VITE_PEXEL_KEY
 
 // consider function overload
-export const fetchCurrated = async (per_page?: number, page?: number, pageUrl?: string) => {
-  const url = pageUrl || `${pexelUrl}/v1/curated?per_page=${per_page}&page=${page}` 
+export const fetchCurrated = async (per_page?: number, page?: number) => {
+  const url = `${pexelUrl}/v1/curated?per_page=${per_page}&page=${page}` 
 
   const response = await fetch(url, {
     method: 'GET',
-    mode: 'no-cors',
     headers: { Authorization: pexelKey }
   })
 

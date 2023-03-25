@@ -27,12 +27,11 @@ const HomePage = () => {
         {storedImages.map(image => (
           <ImageCard
             selected
-            key={image.id}
+            key={image.id + image.photographer_url}
             image={image}
             onToogle={updateFovorites}
           />
         ))}
-
         {images?.map((image, i) => (
           <ImageCard
             key={image.id}
