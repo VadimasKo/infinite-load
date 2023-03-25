@@ -1,25 +1,27 @@
-import { forwardRef, Ref, useState } from "react";
+import { forwardRef, Ref, RefCallback, useState } from "react";
 import { PexelImage } from "../../../api/types"
 import styles from './ImageCard.module.scss';
 
 interface Props {
   image: PexelImage
+  setRef?: (instance: HTMLDivElement | null) => void
   onToogle: (id: number, remove?: boolean) => void
   selected?: boolean
 }
 
-const ImageCard = forwardRef<HTMLDivElement, Props>(({ image, selected, onToogle }, ref) => {
+const ImageCard = (({ image, selected, onToogle, setRef }: Props) => {
   const [hovered, setHovered] = useState(false)
 
   return (
     <div
       className={[styles.imageCard, hovered && styles.hovered].join(' ')} 
       onClick={() => setHovered(!hovered)}
-      ref={ref}
+      ref={setRef}
     >
       <img
+        crossOrigin='anonymous'
         draggable={false}
-        loading='lazy' // is lazy loading good enough?
+        loading='lazy' 
         src={image.src.large2x}
         alt={image.alt}
       />

@@ -8,14 +8,14 @@ const useFetchImages = () => {
   const [error, setError] = useState<unknown>()
 
   const fetchMoreImages = async () => {
-    console.log('load more', response) //why is it undefined
-    if (!response || loading) return
+    console.log('load more', response?.page) // RESPONSE ALWAYS UNDEFINED BUG WITH REACT OR SETUP????
+    if (!response || !loading) return
     setLoading(true)
     try {
-      const newResponse = await pexelApi.fetchCurrated(30, response.page+1);
+      const newResponse = await pexelApi.fetchCurrated(30, response.page + 1);
       newResponse.photos = response.photos.concat(newResponse.photos)
-      console.log('loaded more', newResponse)
       setResponse(newResponse)
+
     } catch(e) {
       setError(e)
     }
@@ -23,14 +23,18 @@ const useFetchImages = () => {
   }
 
   useEffect(() => {
-    pexelApi.fetchCurrated(30, 2)
+    const controller = new AbortController()
+
+    pexelApi.fetchCurrated(30, 2, controller.signal)
       .then(result => setResponse(result))
       .catch(e => setError(e))
       .finally(() => setLoading(false))
+
+    return () => controller.abort();
   }, [])
 
 
-  return [response?.photos, error, fetchMoreImages] as const
+  return [response?.photos || [], error, fetchMoreImages] as const
 }
 
 export default useFetchImages;
