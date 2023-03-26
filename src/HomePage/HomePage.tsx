@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PexelImage } from "../api/types";
 import photoStorage from "../utils/phtoStorage";
 import ImageCard from "./components/ImageCard/ImageCard";
@@ -10,9 +10,11 @@ import styles from './HomePage.module.scss';
 const HomePage = () => {
   const [images, error, fetchMore] = useFetchImages();
   const [storedImages, setStoredImages] = useState(photoStorage.getPhotos());
-  const loaderRef = useIntersectionObserver(fetchMore)
+  const [isVisible, loaderRef] = useIntersectionObserver()
 
-  console.log('images', images)
+  useEffect(() => {
+    if (isVisible) fetchMore();
+  }, [isVisible])
 
   const updateFovorites = (id: number, remove?: boolean) => {
     const newStored = remove ?
@@ -39,7 +41,7 @@ const HomePage = () => {
             key={image.id}
             image={image}
             onToogle={updateFovorites}
-            setRef={images.length - 9 == i ? loaderRef : undefined} // SIMPLIFY
+            setRef={images.length - 12 == i ? loaderRef : undefined} // SIMPLIFY
           />
         ))}
       </div>

@@ -1,4 +1,4 @@
-import { forwardRef, Ref, RefCallback, useState } from "react";
+import { useState } from "react";
 import { PexelImage } from "../../../api/types"
 import styles from './ImageCard.module.scss';
 
@@ -9,20 +9,20 @@ interface Props {
   selected?: boolean
 }
 
+
 const ImageCard = (({ image, selected, onToogle, setRef }: Props) => {
   const [hovered, setHovered] = useState(false)
 
   return (
     <div
-      className={[styles.imageCard, hovered && styles.hovered].join(' ')} 
+      className={[styles.imageCard, hovered && styles.hovered].join(' ')}
       onClick={() => setHovered(!hovered)}
       ref={setRef}
     >
       <img
         crossOrigin='anonymous'
         draggable={false}
-        loading='lazy' 
-        src={image.src.large2x}
+        src={image.src.large}
         alt={image.alt}
       />
       <div draggable={false} className={styles.info}>
