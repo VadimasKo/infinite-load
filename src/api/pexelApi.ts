@@ -1,4 +1,4 @@
-import { FetchCurratedResponse } from "./types";
+import { FetchCurratedResponse } from './types';
 
 const pexelUrl = import.meta.env.VITE_PEXEL_URL
 const pexelKey = import.meta.env.VITE_PEXEL_KEY
