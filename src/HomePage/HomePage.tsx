@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { PexelImage } from "../api/types";
-import photoStorage from "../utils/phtoStorage";
-import ImageCard from "./components/ImageCard/ImageCard";
-import useFetchImages from "./components/useFetchImages";
-import useIntersectionObserver from "./components/useIntersectionObserver";
+import { useEffect, useState } from 'react';
+import { PexelImage } from '../api/types';
+import photoStorage from '../utils/phtoStorage';
+import ImageCard from './components/ImageCard/ImageCard';
+import useFetchImages from './components/useFetchImages';
+import useIntersectionObserver from './components/useIntersectionObserver';
 import styles from './HomePage.module.scss';
 
 

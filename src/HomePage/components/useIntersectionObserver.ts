@@ -1,4 +1,4 @@
-import { RefCallback, useCallback, useRef, useState } from "react";
+import { RefCallback, useCallback, useRef, useState } from 'react';
 
 
 const useIntersectionObserver = () => {

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { PexelImage } from "../../../api/types"
+import { useState } from 'react';
+import { PexelImage } from '../../../api/types'
 import styles from './ImageCard.module.scss';
 
 interface Props {

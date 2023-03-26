@@ -1,5 +1,4 @@
-import { PexelImage } from "../api/types"
-
+import { PexelImage } from '../api/types'
 
 const storePhotos = (items: PexelImage[]) => (
   localStorage.setItem('photos', JSON.stringify(items))

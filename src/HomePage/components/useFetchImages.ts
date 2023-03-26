@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { FetchCurratedResponse } from "../../api/types";
-import pexelApi from "../../api/pexelApi";
+import { useEffect, useState } from 'react';
+import { FetchCurratedResponse } from '../../api/types';
+import pexelApi from '../../api/pexelApi';
 
 
 const useFetchImages = () => {
